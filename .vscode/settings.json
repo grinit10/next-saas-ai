@@ -15,5 +15,8 @@
         "titleBar.inactiveBackground": "#9cff1599",
         "titleBar.inactiveForeground": "#15202b99"
     },
-    "peacock.color": "#9cff15"
+    "peacock.color": "#9cff15",
+    "cSpell.words": [
+        "nextjs"
+    ]
 }
