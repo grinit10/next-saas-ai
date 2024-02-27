@@ -1,69 +1,19 @@
 "use client";
 
+import { routes } from "@/lib/routes";
 import { cn } from "@/lib/utils";
-import {
-  Code,
-  ImageIcon,
-  LayoutDashboard,
-  MessageSquare,
-  MusicIcon,
-  Settings,
-  VideoIcon,
-} from "lucide-react";
 import { Montserrat } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const montserrat = Montserrat({
   weight: "600",
   subsets: ["latin"],
 });
 
-const routes = [
-  {
-    label: "Dashboard",
-    path: "/dashboard",
-    icon: LayoutDashboard,
-    color: "text-sky-500",
-  },
-  {
-    label: "Conversation",
-    path: "/conversation",
-    icon: MessageSquare,
-    color: "text-violet-500",
-  },
-  {
-    label: "Image generation",
-    path: "/image",
-    icon: ImageIcon,
-    color: "text-pink-500",
-  },
-  {
-    label: "Video generation",
-    path: "/video",
-    icon: VideoIcon,
-    color: "text-orange-700",
-  },
-  {
-    label: "Music generation",
-    path: "/music",
-    icon: MusicIcon,
-    color: "text-emerald-500",
-  },
-  {
-    label: "Code generation",
-    path: "/code",
-    icon: Code,
-    color: "text-green-700",
-  },
-  {
-    label: "Settings",
-    path: "/settings",
-    icon: Settings,
-  },
-];
-
 const SideBar = () => {
+  const pathName = usePathname();
   return (
     <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
       <div className="px-3 py-2 flex-1">
@@ -83,7 +33,10 @@ const SideBar = () => {
               <Link
                 href={route.path}
                 key={route.path}
-                className="text-sm group flex p-3 w-full justify-start font-medium hover:bg-zinc-400 rounded-md transition duration-150 ease-in-out"
+                className={cn(
+                  "text-sm group flex p-3 w-full justify-start font-medium hover:bg-zinc-400 rounded-md transition duration-150 ease-in-out",
+                  pathName === route.path && "bg-zinc-600"
+                )}
               >
                 <div className="flex items-center flex-1">
                   <route.icon
